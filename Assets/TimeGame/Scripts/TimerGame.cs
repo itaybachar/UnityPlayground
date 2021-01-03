@@ -26,6 +26,7 @@ public class TimerGame : MonoBehaviour
             if(RandomCrash())
             {
                 print("You pressed Space wrong... You broke the game!");
+                print("Seriously how do u fuck that up?");
                 print("Restarting...");
             }
             else
@@ -48,7 +49,7 @@ public class TimerGame : MonoBehaviour
 
     bool RandomCrash()
     {
-        return (0.4f<Random.Range(0.0f,1.0f));
+        return (0.48f>Random.Range(0.0f,1.0f));
     }
 
     void SetNewRandomTime()
