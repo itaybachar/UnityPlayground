@@ -1,0 +1,1 @@
+The objective of this game is to espace falling blocks for as long as possible. This game was made by following Sebastian Lague's Unity tutorial :)
