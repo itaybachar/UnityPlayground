@@ -6,12 +6,36 @@ public class Player : MonoBehaviour
 {
     float speed = 7.5f;
 
+    Vector3 velocity;
+    Rigidbody myRb;
+    bool jump = false;
+
+    void Start(){
+        myRb = GetComponent<Rigidbody>();
+    }
+
     void Update()
     {
-        Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"),0,Input.GetAxisRaw("Vertical"));
-        Vector3 vel = input.normalized*speed;
-        Vector3 moveAmount = vel*Time.deltaTime;
+        Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"),0 ,Input.GetAxisRaw("Vertical"));
+        velocity = input.normalized*speed;
+        velocity.y = Input.GetAxisRaw("Jump")*speed;
+        if(jump)
+        {
+            velocity.y = 5*speed;
+            jump = !jump;
+        }
+    }
 
-        transform.Translate(moveAmount);
+    void FixedUpdate() {
+        myRb.position += velocity * Time.fixedDeltaTime;
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Coin")
+        {
+            Destroy(other.gameObject);
+            jump = true;
+        }
     }
 }
