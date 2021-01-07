@@ -6,6 +6,7 @@ public class Spawner : MonoBehaviour
 {
     public GameObject fallingEntityPrefab;
     public Vector2 spawnTimeMinMax;
+    
     float nextSpawnTime;
 
     public float maxSpawnSize; 
